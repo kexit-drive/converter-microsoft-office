@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: converter-microsoft-office
+  servlet:
+    multipart:
+      max-file-size: 512MB
+      max-request-size: 512MB
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKAHOSTNAME:localhost}:8761/eureka/
+  instance:
+    metadataMap:
+      convertFrom:
+        - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        - application/vnd.openxmlformats-officedocument.presentationml.presentation
+        - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+      convertTo: application/pdf
+    healthCheckUrlPath: /actuator/health
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
