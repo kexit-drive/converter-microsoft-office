@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-class ClientConfiguration {
+public class WebClientConfiguration {
 
     private static final int MAX_IN_MEMORY_SIZE_IN_BYTES = Math.toIntExact(DataSize.ofMegabytes(512).toBytes());
 
